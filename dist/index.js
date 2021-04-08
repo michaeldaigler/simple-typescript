@@ -74,3 +74,10 @@ ANY = 'a string';
 ANY = 1;
 ANY = true;
 //Type Assertions
+const email = document.getElementById('email');
+if (email) {
+    email.addEventListener('change', e => {
+        const input = e.currentTarget;
+        console.log(input.value);
+    });
+}
