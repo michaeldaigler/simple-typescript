@@ -52,9 +52,18 @@ let tuple: [string, number] = ['str', 1];
 
 // Enum
 enum Color {
-    Red,
-    Green,
-    Blue
+    Red = 2,
+    Green = 5,
+    Blue = 99,
 }
+let myFavColor: Color = Color.Blue;
+console.log(Color.Red, Color.Green, Color.Blue);
+console.log(Color[99])
 
 //Any
+let ANY: any;
+ANY = 'a string';
+ANY = 1;
+ANY = true
+
+//Type Assertions

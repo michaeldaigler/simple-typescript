@@ -61,8 +61,16 @@ let tuple = ['str', 1];
 // Enum
 var Color;
 (function (Color) {
-    Color[Color["Red"] = 0] = "Red";
-    Color[Color["Green"] = 1] = "Green";
-    Color[Color["Blue"] = 2] = "Blue";
+    Color[Color["Red"] = 2] = "Red";
+    Color[Color["Green"] = 5] = "Green";
+    Color[Color["Blue"] = 99] = "Blue";
 })(Color || (Color = {}));
+let myFavColor = Color.Blue;
+console.log(Color.Red, Color.Green, Color.Blue);
+console.log(Color[99]);
 //Any
+let ANY;
+ANY = 'a string';
+ANY = 1;
+ANY = true;
+//Type Assertions
