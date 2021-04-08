@@ -67,14 +67,14 @@ ANY = 1;
 ANY = true
 
 //Type Assertions
-const email = document.getElementById('email');
+// const email = document.getElementById('email');
 
-if (email) {
-    email.addEventListener('change', e => {
-        const input = e.currentTarget as HTMLInputElement;
-        console.log(input.value)
-    })
-}
+// if (email) {
+//     email.addEventListener('change', e => {
+//         const input = e.currentTarget as HTMLInputElement;
+//         console.log(input.value)
+//     })
+// }
 
 // FUnctions (optional and default parameters)
 
@@ -102,3 +102,85 @@ function calcArea(...args: number[]): number {
     return Math.pow(args[0], 2);
 
 }
+
+
+// Classes
+class Robot {
+    _color: string;
+    static availableColors = ['green', 'yellow'];
+    static isColorAvailable(color: string) {
+        return Robot.availableColors.includes(color)
+    }
+    // desrcibing properties in constructor allows typescript to implicitly assign the arguments as properties of the class e.g. 'protected _name: string'
+    constructor(protected _name: string, color: string) {
+        this._color = color
+    }
+
+    askName() {
+        console.log( `My name is ${this.name}`)
+    }
+    move(distance: number) {
+        console.log(`${this.name} moved ${distance} meters`);
+    }
+
+    set color(color: string) {
+        if (!Robot.isColorAvailable(color)) {
+            throw new Error(`Color ${color} is not available!`)
+        }
+        this._color = color;
+    }
+
+    set name(value: string) {
+        this._name = "PREFIX_" + value;
+    }
+    get name() {
+        return this._name + "_SUFFIX";
+    }
+}
+
+class FlyingRobot extends Robot {
+    private readonly jetpckSize: number;
+    constructor(name: string, jPackSize: number) {
+        super(name);
+        this.jetpckSize = jPackSize;
+    }
+    move(distance: number) {
+        console.log(`${this.name} is flying`);
+        super.move(distance);
+    }
+}
+
+const robot = new Robot('John');
+robot.askName()
+
+const flyingRobot = new FlyingRobot('Jim', 2);
+flyingRobot.move(10);
+flyingRobot.name = "Mike"
+console.log(flyingRobot.name)
+
+// PRivate fields
+// a private field is unique  and exists only in the scope of the containing class, cannot be ovveridden or read fromn subclasses
+class PrivateRobot {
+    #name: string;
+    constructor(name: string) {
+        this.#name = `Private-${name}`;
+    }
+    getName() {
+        return this.#name;
+    }
+}
+
+class AdvancedRobot extends PrivateRobot {
+    #name: string;
+    constructor(name: string) {
+        super(name);
+        this.#name = `Advanced-${name}`;
+    }
+    getName() {
+        return this.#name;
+    }
+}
+const r1 = new AdvancedRobot("Michael");
+const r2 = new PrivateRobot("Bob")
+
+console.log(`${r1.getName()}  |  ${r2.getName()}` )
