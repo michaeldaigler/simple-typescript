@@ -34,6 +34,9 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var _name_1, _name_2;
 Object.defineProperty(exports, "__esModule", { value: true });
 const multiply_1 = __importStar(require("./multiply"));
+const shopping_cart_1 = require("./lib/shopping-cart");
+const calculate_total_amount_1 = require("./lib/calculate-total-amount");
+const order_1 = require("./lib/order");
 // import * as mulitplyModule from "./multiply"
 const a = 5;
 const d = 2;
@@ -182,3 +185,7 @@ _name_2 = new WeakMap();
 const r1 = new AdvancedRobot("Michael");
 const r2 = new PrivateRobot("Bob");
 console.log(`${r1.getName()}  |  ${r2.getName()}`);
+const cart = new shopping_cart_1.ShoppingCart();
+console.log(`The cart's total is ${calculate_total_amount_1.calculateTotalAmount(cart)}`);
+const order = new order_1.Order();
+console.log(`The order's total is ${calculate_total_amount_1.calculateTotalAmount(order)}`);

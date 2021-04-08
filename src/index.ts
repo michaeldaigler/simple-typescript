@@ -1,4 +1,7 @@
 import mulitply, { multiplyByTwo as mBy2, HelloWorld } from "./multiply";
+import {ShoppingCart} from './lib/shopping-cart'
+import { calculateTotalAmount } from "./lib/calculate-total-amount";
+import { Order } from "./lib/order";
 // import * as mulitplyModule from "./multiply"
 const a = 5;
 const d = 2;
@@ -183,4 +186,11 @@ class AdvancedRobot extends PrivateRobot {
 const r1 = new AdvancedRobot("Michael");
 const r2 = new PrivateRobot("Bob")
 
-console.log(`${r1.getName()}  |  ${r2.getName()}` )
+console.log(`${r1.getName()}  |  ${r2.getName()}`)
+
+
+const cart = new ShoppingCart();
+console.log(`The cart's total is ${calculateTotalAmount(cart)}`)
+
+const order = new Order();
+console.log(`The order's total is ${calculateTotalAmount(order)}`)
