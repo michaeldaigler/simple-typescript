@@ -45,6 +45,8 @@ type MyResultType = MyType<string | number>
 type InferSomething<T> = T extends infer U ? U : any;
 type Inferred = InferSomething<'I am a string'>
 
-type InferSomething2<T> = T extends { a: infer A, b: number } ? A : any;
-type Inferred2 = InferSomething2<{a: 'hi', b: 1}>
+type InferSomething2<T> = T extends { a: infer A, b: infer B } ? A & B: any;
+type Inferred2 = InferSomething2<{ a: { someAProp: 1 }, b: { someBProp: 'B' } }>;
+
+type MyFuncReturnValue = ReturnType<() => true>
 
