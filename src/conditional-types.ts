@@ -25,6 +25,16 @@ type StringOrNot<T> = T extends string ? string : never;
 
 type AUnion = string | boolean | never;
 
-type ResultType = Exclude<'a' |'c' | 'c', 'a'| 'b'>
 
+// type Exclude<T, U> = T extends U ? never: T;
+type ResultType = Exclude<'a' | 'b' | 'c', 'a' | 'b'>
 
+/**
+ 'a' extends 'a' | 'b' ? never : 'a' => never
+ 'b' extends 'a' | 'b' ? never : 'b' => never
+ 'c' extends 'a' | 'b' ? never : 'c' => 'c'
+
+ */
+
+type MyType<T> = T extends string | number ? T : never;
+type MyResultType = MyType<string | number | boolean>
