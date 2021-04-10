@@ -20,8 +20,8 @@ type Record1<K extends keyof any, T> = {
 } & {someProperty: string}
 
 const someRecord: Record1<'A' | 'B', number> = {A: 1, B: 2, someProperty: "hi"}
-someRecord.apples = 10;
-someRecord.oranges = 10;
+// someRecord.apples = 10;
+// someRecord.oranges = 10;
 
 
 interface Record2 {
