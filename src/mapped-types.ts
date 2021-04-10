@@ -16,9 +16,10 @@ type MyNewType2 = Pick1<{ a: 'a', b: 'b' }, 'a'>;
 
 type Record1<K extends keyof any, T> = {
     [P in K]: T;
-}
 
-const someRecord: Record1<string, number> = {}
+} & {someProperty: string}
+
+const someRecord: Record1<'A' | 'B', number> = {A: 1, B: 2, someProperty: "hi"}
 someRecord.apples = 10;
 someRecord.oranges = 10;
 
